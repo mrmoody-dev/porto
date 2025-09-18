@@ -7,11 +7,7 @@ function About() {
       <div className="about-content">
         <h2>Tentang Saya</h2>
         <p>
-          Halo! Saya adalah seorang desainer patung yang fokus pada media
-          tembaga dan kerajinan tangan. Dengan lebih dari 10 tahun pengalaman,
-          saya telah menghasilkan berbagai karya seni yang orisinal dan unik.
-          Website ini adalah tempat saya menampilkan karya-karya terbaik dan
-          berbagi proses kreatif di baliknya.
+          Halo! Saya adalah seorang developer.
         </p>
         <p>
           Saya percaya setiap karya seni memiliki cerita, dan saya berkomitmen
