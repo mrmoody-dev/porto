@@ -1,6 +1,6 @@
 // src/components/Hero.jsx
 import React from "react";
-import heroImage from "./logo.png"; // Ganti dengan gambar yang Anda inginkan
+import heroImage from "./me.png"; // Ganti dengan gambar yang Anda inginkan
 import { Link } from "react-router-dom";
 
 function Hero() {
