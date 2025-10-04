@@ -1,31 +1,39 @@
-// src/hooks/useScrollAnimation.js
-import { useEffect } from "react";
+// src/hooks/useScrollAnimation.tsx
+import { useEffect, useState, useRef } from "react";
 
-const useScrollAnimation = (className: string) => {
+export const useScrollAnimation = <T extends HTMLElement>() => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<T>(null);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-          }
-        });
+      ([entry]) => {
+        // Update our state when observer callback fires
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
       },
       {
         root: null,
         rootMargin: "0px",
-        threshold: 0.1,
+        threshold: 0.1, // Trigger when 10% of the element is visible
       }
     );
 
-    const elements = document.querySelectorAll(className);
-    elements.forEach((el) => observer.observe(el));
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
 
     return () => {
-      elements.forEach((el) => observer.unobserve(el));
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
     };
-  }, [className]);
-};
+  }, []); // Empty array ensures that effect is only run on mount and unmount
 
+  return [ref, isVisible] as const;
+};
 
 export default useScrollAnimation;

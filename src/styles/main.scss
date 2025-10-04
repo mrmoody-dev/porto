@@ -10,8 +10,14 @@ html {
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background-color: $color-background;
-  color: $color-dark;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Universal transition for all elements
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .container {
@@ -20,29 +26,18 @@ body {
   padding: 0 20px;
 }
 
-// Global Reusable Classes
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.animate-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 // --- HEADER & NAV ---
 .main-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: $color-background;
+  background-color: var(--header-bg-color);
+  backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px var(--shadow-color);
 }
 
 .main-header .logo-img {
@@ -59,13 +54,32 @@ body {
 
 .main-nav a {
   text-decoration: none;
-  color: $color-dark;
+  color: var(--text-color);
   font-weight: 450;
   transition: color 0.3s ease;
 }
 
 .main-nav a:hover {
-  color: $color-dark;
+  color: var(--primary-color);
+}
+
+.theme-toggle-button {
+    background: transparent;
+    border: 1px solid var(--secondary-color);
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-toggle-button:hover {
+    background-color: var(--card-bg-color);
 }
 
 // --- HERO SECTION (NEW) ---
@@ -73,7 +87,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $color-dark;
+  background-color: var(--card-bg-color);
   border-radius: 10px;
   overflow: hidden;
   margin: 40px 0;
@@ -82,7 +96,7 @@ body {
 
 .hero-content-left {
   padding: 50px;
-  color: white;
+  color: var(--text-color);
   flex: 1;
 }
 
@@ -99,20 +113,19 @@ body {
 }
 
 .hero-button {
-  background-color: $color-background;
-  color: $color-dark;
+  background-color: var(--primary-color);
+  color: var(--bg-color);
   padding: 15px 30px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
   margin-top: 30px;
 }
 
 .hero-button:hover {
-  background-color: darken($color-secondary, 10%);
+  opacity: 0.9;
 }
 
 .hero-image-right {
@@ -131,14 +144,14 @@ body {
 .features-section {
   padding: 80px 0;
   text-align: center;
-  background-color: $color-dark;
+  background-color: var(--card-bg-color);
   margin: 40px 0;
   border-radius: 10px;
 }
 
 .features-title {
   font-size: 36px;
-  color: $color-primary;
+  color: var(--text-color);
   margin-bottom: 50px;
 }
 
@@ -150,16 +163,16 @@ body {
 }
 
 .feature-card {
-  background-color: white;
+  background-color: var(--bg-color);
   border-radius: 8px;
   padding: 40px 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .feature-icon {
@@ -170,18 +183,20 @@ body {
 
 .feature-card h3 {
   font-size: 20px;
-  color: $color-dark;
+  color: var(--text-color);
 }
 
 .feature-card p {
-  color: $color-primary;
+  color: var(--primary-color);
 }
 
 // --- ABOUT SECTION ---
 .about-section {
   padding: 80px 0;
   text-align: center;
-  background-color: lighten($color-dark, 2%);
+  background-color: var(--card-bg-color);
+  border-radius: 10px;
+  margin: 40px 0;
 }
 
 .about-content {
@@ -191,14 +206,14 @@ body {
 
 .about-content h2 {
   font-size: 36px;
-  color: $color-primary;
+  color: var(--text-color);
   margin-bottom: 20px;
 }
 
 .about-content p {
   font-size: 18px;
   line-height: 1.6;
-  color: $color-primary;
+  color: var(--primary-color);
   padding: 8px;
 }
 
@@ -210,7 +225,7 @@ body {
 
 .gallery-section h2 {
   font-size: 36px;
-  color: $color-dark;
+  color: var(--text-color);
   margin-bottom: 40px;
 }
 
@@ -225,13 +240,13 @@ body {
   overflow: hidden;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gallery-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .gallery-item img {
@@ -252,13 +267,13 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba($color-primary, 0.8);
+  background-color: rgba(27, 60, 83, 0.8);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
+  color: #F9F3EF;
   opacity: 0;
   transform: scale(0.8);
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -271,7 +286,7 @@ body {
 
 .gallery-overlay h3,
 .gallery-overlay p {
-  color: white;
+  color: #F9F3EF;
   margin: 5px 20px;
 }
 
@@ -284,39 +299,37 @@ body {
 }
 
 .project-link {
-  color: white;
-  border: 1px solid white;
+  color: #F9F3EF;
+  border: 1px solid #F9F3EF;
   padding: 8px 16px;
   text-decoration: none;
   border-radius: 4px;
   margin-top: 10px;
-  transition: background-color 0.3s ease;
 }
 
 .project-link:hover {
-  background-color: white;
-  color: $color-primary;
+  background-color: #F9F3EF;
+  color: #1B3C53;
 }
 
 // --- PROJECT DETAIL PAGE ---
 .project-detail-section {
   padding: 80px 0;
-  background-color: $color-background;
 }
 
 .project-detail-content {
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  box-shadow: 0 8px 25px rgba($color-dark, 0.1);
+  box-shadow: 0 8px 25px var(--shadow-color);
   border-radius: 10px;
-  background-color: white;
+  background-color: var(--card-bg-color);
   padding: 40px;
 }
 
 .project-detail-content h2 {
   font-size: 48px;
-  color: $color-dark;
+  color: var(--text-color);
   margin-bottom: 20px;
 }
 
@@ -326,13 +339,13 @@ body {
   height: auto;
   border-radius: 8px;
   margin-bottom: 30px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 .project-detail-content p {
   font-size: 18px;
   line-height: 1.8;
-  color: $color-primary;
+  color: var(--primary-color);
   margin-bottom: 20px;
   text-align: left;
 }
@@ -341,21 +354,21 @@ body {
 .contact-section {
   padding: 80px 0;
   text-align: center;
-  background-color: $color-background;
+  background-color: var(--card-bg-color);
   border-radius: 10px;
   margin: 40px 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 .contact-section h2 {
   font-size: 36px;
-  color: $color-dark;
+  color: var(--text-color);
   margin-bottom: 10px;
 }
 
 .contact-intro {
   font-size: 18px;
-  color: $color-dark;
+  color: var(--text-color);
   max-width: 600px;
   margin: 0 auto 40px;
   line-height: 1.6;
@@ -375,44 +388,43 @@ body {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
-  color: $color-dark;
+  color: var(--text-color);
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid lighten($color-primary, 20%);
+  border: 1px solid var(--secondary-color);
   border-radius: 8px;
-  background-color: white;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   box-sizing: border-box;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: $color-primary;
-  box-shadow: 0 0 0 3px rgba($color-primary, 0.2);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--shadow-color);
 }
 
 .contact-form button {
   width: 100%;
   position: relative;
   padding: 15px;
-  background-color: $color-dark;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--bg-color);
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
   box-sizing: border-box;
 }
 
 .contact-form button:hover {
-  background-color: lighten($color-dark, 10%);
+  opacity: 0.9;
 }
 
 // --- MEDIA QUERIES FOR MOBILE DEVICES ---

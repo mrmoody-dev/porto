@@ -57,19 +57,23 @@ function Home() {
   );
 }
 
+import { ThemeProvider } from "./context/ThemeContext";
+
 function App() {
   return (
     <Router>
-      <div className="container">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects/:id" element={<ProjectDetail />} />
-          </Routes>
-        </main>
-      </div>
-      <ScrollToHash />
+      <ThemeProvider>
+        <div className="container">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/projects/:id" element={<ProjectDetail />} />
+            </Routes>
+          </main>
+        </div>
+        <ScrollToHash />
+      </ThemeProvider>
     </Router>
   );
 }

@@ -1,13 +1,21 @@
-// src/components/Features.jsx
+// src/components/Features.tsx
 import React from "react";
 import { Link } from "react-router-dom";
 import { allFeatures } from "../data/features"; // Impor data dari file terpusat
+import useScrollAnimation from "../hooks/useScrollAnimation";
 
 // Ganti dengan gambar yang sesuai untuk setiap kolom
 
 function Features() {
+  const [ref, isVisible] = useScrollAnimation<HTMLElement>();
+
   return (
-    <section className="features-section">
+    <section
+      ref={ref}
+      className={`features-section scroll-animation ${
+        isVisible ? "is-visible" : ""
+      }`}
+    >
       <h2 className="features-title">Layanan Kami</h2>
       <div className="features-grid">
         {allFeatures.map((item) => (

@@ -1,9 +1,16 @@
-// src/components/Contact.jsx
+// src/components/Contact.tsx
 import React from "react";
+import useScrollAnimation from "../hooks/useScrollAnimation";
 
 function Contact() {
+  const [ref, isVisible] = useScrollAnimation<HTMLElement>();
+
   return (
-    <section id="contact" className="contact-section">
+    <section
+      id="contact"
+      ref={ref}
+      className={`contact-section scroll-animation ${isVisible ? "is-visible" : ""}`}
+    >
       <div className="container">
         <h2>Hubungi Kami</h2>
         <p className="contact-intro">

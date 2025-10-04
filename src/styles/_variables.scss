@@ -1,5 +1,28 @@
-// src/styles/_variables.scss
+/* src/styles/_variables.scss */
 
+:root {
+  // Light Theme Palette
+  --bg-color: #F9F3EF; // Light beige background
+  --text-color: #1B3C53; // Dark blue text
+  --primary-color: #456882; // Muted blue
+  --secondary-color: #D2C1B6; // Muted brown/grey
+  --card-bg-color: #FFFFFF; // White cards
+  --header-bg-color: rgba(249, 243, 239, 0.85); // Semi-transparent header
+  --shadow-color: rgba(0, 0, 0, 0.07);
+}
+
+.dark-theme {
+  // Dark Theme Palette
+  --bg-color: #1B3C53; // Dark blue background
+  --text-color: #F9F3EF; // Light beige text
+  --primary-color: #a2c1d2; // Lighter blue for accents
+  --secondary-color: #5a7892; // A slightly lighter dark blue
+  --card-bg-color: #234a65; // Darker card background
+  --header-bg-color: rgba(27, 60, 83, 0.85); // Semi-transparent header
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+// Original Sass variables for reference or non-themed values
 $color-dark: #d2c1b6;
 $color-primary: #456882;
 $color-secondary: #f9f3ef;

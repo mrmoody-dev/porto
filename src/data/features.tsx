@@ -20,8 +20,8 @@ export const allFeatures = [
   {
     id: 3,
     icon: featureIcon3,
-    title: "Digital Marketing",
+    title: "Migration Hosting & Domain",
     description:
-      "Strategi pemasaran digital untuk menjangkau audiens yang lebih luas.",
+      "Melakukan pemindahan hosting dan domain ke layanan hosting terbaik.",
   },
 ];

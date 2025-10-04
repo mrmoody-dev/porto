@@ -1,11 +1,18 @@
-// src/components/Gallery.jsx
+// src/components/Gallery.tsx
 import React from "react";
 import { Link } from "react-router-dom";
 import { allProjects } from "../data/projects"; // Impor data dari file terpusat
+import useScrollAnimation from "../hooks/useScrollAnimation";
 
 function Gallery() {
+  const [ref, isVisible] = useScrollAnimation<HTMLElement>();
+
   return (
-    <section id="portfolio" className="gallery-section">
+    <section
+      id="portfolio"
+      ref={ref}
+      className={`gallery-section scroll-animation ${isVisible ? "is-visible" : ""}`}
+    >
       <h2>Portofolio Kami</h2>
       <div className="gallery-grid">
         {allProjects.map((project) => (

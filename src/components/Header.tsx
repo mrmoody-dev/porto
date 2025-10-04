@@ -1,9 +1,12 @@
-// src/components/Header.jsx
-import React from "react";
+// src/components/Header.tsx
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "./logo.png";
+import { ThemeContext } from "../context/ThemeContext";
 
 function Header() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
     <header className="main-header">
       <Link to="/#beranda">
@@ -28,6 +31,9 @@ function Header() {
           </li>
         </ul>
       </nav>
+      <button onClick={toggleTheme} className="theme-toggle-button">
+        {theme === 'light' ? '🌙' : '☀️'}
+      </button>
     </header>
   );
 }

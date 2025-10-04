@@ -1,9 +1,18 @@
-// src/components/About.jsx
+// src/components/About.tsx
 import React from "react";
+import useScrollAnimation from "../hooks/useScrollAnimation";
 
 function About() {
+  const [ref, isVisible] = useScrollAnimation<HTMLElement>();
+
   return (
-    <section id="about" className="about-section">
+    <section
+      id="about"
+      ref={ref}
+      className={`about-section scroll-animation ${
+        isVisible ? "is-visible" : ""
+      }`}
+    >
       <div className="about-content">
         <h2>Tentang Saya</h2>
         <p>
